@@ -24,7 +24,7 @@ public class MiProyectoController : ControllerBase
         var db = client.GetDatabase("Escuela_Victoria_Eduardo");
         var collection = db.GetCollection<Equipo>("Equipo");
 
-        var list = collection.Find(FilterDefinition<Equipo>.Empty).ToList();
-        return Ok(list);
+        var item = collection.Find(FilterDefinition<Equipo>.Empty).FirstOrDefault();
+        return Ok(item);
     }
 }
