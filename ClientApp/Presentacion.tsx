@@ -31,14 +31,30 @@ const Presentacion = () => {
         cargarDatos();
     }, []);
 
+    const formatoFecha =  (fecha: string | undefined) => {
+        if (fecha) {
+            const formato =  new Intl.DateTimeFormat("es-MX", {year: "numeric", month: "2-digit", day: "2-digit"});
+      const dt = new Date(fecha);
+
+      return formato.format(dt);
+
+        }
+        return undefined;
+    }
+
     // vista
     return (
         <>
-           <div className="display-4">Cbtis No.105</div>
-           <div className="h1">Integrantes</div>
-           <div className="h2">Ana Victoria Silva González</div>
-           <div className="h2">Eduardo Valdez Ochoa</div>
-           <div className="h1">Pagina del Cbtis</div>
+           <div className="display-4 text-center">{equipo?.Escuela}</div>
+           <div className="h1 text-center mt-4">{equipo?.Carrera}</div>
+           <div className="h1 text-center mt-4">{equipo?.DatosSemestre}</div>
+           <div className="h1 text-center">{equipo?.Grupo}</div>
+           <div className="h1 text-center mt-4">Integrantes</div>
+           <div className="h3 text-center text-primary">{equipo?.Integrante1}</div>
+           <div className="h3 text-center text-primary">{equipo?.Integrante2}</div>
+           <div className="h1 text-center mt-4">Pagina del Cbtis</div>
+           <div className="h3 text-center">{equipo?.Proyecto}</div>
+           <div className="h4 text-center mt-4">{formatoFecha(equipo?.Fecha)}</div>
         </>
     )
 }
